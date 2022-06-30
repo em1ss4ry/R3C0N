@@ -73,8 +73,9 @@ Help()
    echo "n     Conducts NMAP scan Usage: -n <1.1.1.1> (Defualt: -sV -sC -p- ) "
    echo "s     Conducts sublist3r scan. Usage -s <domain>\n\n"
    echo
-   echo "example: ./recon.sh -n 10.10.10.10"
-   printf "example: ./recon.sh -s google.com\n\n\n"
+   echo "example: sh R3C0N.sh -n 10.10.10.10"
+   echo "example: ./R3C0N.sh -n 10.10.10.10 -s google.com"
+   printf "example: ./R3C0N.sh -s google.com\n\n\n"
    
 }
 Help
