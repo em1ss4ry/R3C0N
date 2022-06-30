@@ -11,6 +11,9 @@ Active recon script compiling popular tools used for pentesting
 - NMAP
 - SUBLIST3R
 
+#     USAGE      #
+
+~/R3C0N $ sh R3C0N.sh
 
 
 #     CONFIG     #
