@@ -58,7 +58,7 @@ printf "${IRed}8888888P\"       \"Y8b. 888        888    888 888 Y88b888\n"
 printf "${IRed}888 T88b   888    888 888    888 888    888 888  Y88888\n" 
 printf "${IRed}888  T88b  Y88b  d88P Y88b  d88P Y88b  d88P 888   Y8888\n" 
 printf "${IRed}888   T88b  \"Y8888P\"   \"Y8888P\"   \"Y8888P\"  888    Y888\n\n"
-printf "${IWhite}                      by @CYPH3R\n\n\n" 
+printf "${IWhite}                    by @em1ss4ry\n\n\n" 
                                                         
 
 Help()
