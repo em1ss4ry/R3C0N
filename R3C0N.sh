@@ -83,7 +83,7 @@ Help
 
 # Modules (NMAP, SUBLIST3R)
 
-while getopts o:n:s:h flag 
+while getopts n:s:h flag 
 do 
 	case "${flag}" in 
 		h) 
