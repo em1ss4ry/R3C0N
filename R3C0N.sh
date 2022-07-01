@@ -69,43 +69,29 @@ Help()
    printf "#########################\n\n\n"
    printf "${Yellow}Syntax: scriptTemplate [-h|n|o|s]\n"
    echo "options:"
-   echo "h     Print this help menu."
    echo "n     Conducts NMAP scan Usage: -n <1.1.1.1> (Defualt: -sV -sC -p- ) "
    echo "s     Conducts sublist3r scan. Usage -s <domain>\n\n"
    echo
-   echo "example: sh R3C0N.sh -n 10.10.10.10"
-   echo "example: ./R3C0N.sh -n 10.10.10.10 -s google.com"
-   printf "example: ./R3C0N.sh -s google.com\n\n\n"
+   echo "example: ./recon.sh -n 10.10.10.10"
+   printf "example: ./recon.sh -s google.com\n\n\n"
    
 }
 Help
-
-
+	
 # Modules (NMAP, SUBLIST3R)
 
-while getopts n:s:h flag 
+while getopts n:s: flag 
 do 
+	Dirname=$(date +"%d-%m-%y")
+	mkdir $Dirname
+
 	case "${flag}" in 
-		h) 
-			# Display Help
-   			printf "${BYellow}#########################\n"
-   			printf "#${Yellow} R3C0N script funtions ${BYellow}#\n"
-   			printf "#########################\n\n\n"
-   			printf "${Yellow}Syntax: scriptTemplate [-h|n|o|s]\n"
-   			echo "options:"
-			echo "h     Print this help menu."
-			echo "n     Conducts NMAP scan Usage: -n <1.1.1.1> (Defualt: -sV -sC -p- ) "
-			echo "o     Output filename. Usage: -o <filename>"
-			echo "s     Conducts sublist3r scan. Usage -s <domain>\n\n"
-			echo
-			echo "example: ./recon.sh -n 10.10.10.10 -o scan"
-   			printf "example: ./recon.sh -s google.com -o sublist3r\n\n\n"
-   			;;	
-		n) IP=${OPTARG}
-			mkdir NMAP
+			
+		n) 	IP=${OPTARG}
+			mkdir $Dirname/NMAP
 			NMAPoutput=$IP
 			printf "${Green}Beginning NMAP Scan...\n\n"
-			nmap -sC -sV -p- $IP -oN NMAP/$NMAPoutput > /dev/null &
+			nmap -sC -sV -p- $IP -oN $Dirname/NMAP/$NMAPoutput.txt > /dev/null &
 			pid=$! # Process Id of the previous running command
 			spin='-\|/'
 			i=0
@@ -117,11 +103,11 @@ do
 			done
 			printf "\r${Green}NMAP Scan complete results saved on -> ${BGreen}NMAP/$NMAPoutput.txt\n\n"
 			;;
-		s) DOMAIN=${OPTARG}
-			mkdir SUBLIST3R
+		s) 	DOMAIN=${OPTARG}
+			mkdir $Dirname/SUBLIST3R
 			SUBLIST3Routput=$DOMAIN
 			printf "${Green}Beginning Sublist3r Scan...\n\n"
-			sublist3r -d $DOMAIN -o $SUBLIST3Routput > /dev/null &
+			sublist3r -d $DOMAIN -o $Dirname/SUBLIST3R/$SUBLIST3Routput > /dev/null &
 			pid=$! # Process Id of the previous running command
 			spin='-\|/'
 
@@ -146,6 +132,12 @@ done
 
 
 
+
+
+
+
+
+	
 
 
 
