@@ -91,7 +91,7 @@ do
 			mkdir $Dirname/NMAP
 			NMAPoutput=$IP
 			printf "${Green}Beginning NMAP Scan...\n\n"
-			nmap -sC -sV -p- $IP -oN $Dirname/NMAP/$NMAPoutput.txt > /dev/null &
+			nmap -sC -sV -p- $IP -oN $Dirname/NMAP/$NMAPoutput > /dev/null &
 			pid=$! # Process Id of the previous running command
 			spin='-\|/'
 			i=0
